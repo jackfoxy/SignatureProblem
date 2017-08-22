@@ -1,4 +1,4 @@
-Demonstration of problem:
+# Demonstration of problem:
 
 .NET 4.6.1
 
@@ -13,3 +13,7 @@ Using local development storage "UseDevelopmentStorage=true".
 Run from VS 2017 debugger.
 
 The same code will work if there is no FSI file over the library function, but with an FSI file, only the partition and row keys are inserted into the table, not the rest of the data columns.
+
+# Analysis of problem:
+
+Note in the compiled assemblies of the two libraries, the library with the signature file (Librayr 2) has the non-key field properties marked "internal". The Azure problem is possibly doing some sort of reflection that is not picking this up.
